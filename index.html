@@ -37,6 +37,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    
   </head>
 
   <body>
@@ -341,11 +342,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item filter-sugarcane">
               <div class="portfolio-wrap">
-                <img
-                  src="./full_bg__new.jpeg"
-                  class="img-fluid"
-                  alt=""
-                />
+                <img src="./full_bg__new.jpeg" class="img-fluid" alt="" />
                 <div class="portfolio-links">
                   <a
                     style="width: 100%"
@@ -438,7 +435,6 @@
         <div class="container">
           <div class="section-title">
             <h2>Services</h2>
-            
           </div>
 
           <div class="row">
@@ -550,7 +546,8 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
               <form
-                action="https://formsubmit.co/7c31c0126e458e653c4189eed657a36d"
+                id="contact-form"
+                action=""
                 method="POST"
                 role="form"
                 class="php-email-form"
@@ -598,7 +595,6 @@
                 </div>
                 <div class="my-3">
                   <div class="loading">Loading</div>
-                  <div class="error-message"></div>
                   <div class="sent-message">
                     Your message has been sent. Thank you!
                   </div>
@@ -646,5 +642,23 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxV7zifMfXhKlP0YSwpbsa7OHucyFknMKpbNljw0XvI4mYFEtTihpRCWXZWoaBQE3lS/exec";
+
+      const form = document.forms["contact-form"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) =>
+            alert("Thank you! Our team will reach out to you soon.")
+          )
+          .then(() => {
+            window.location.reload();
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
